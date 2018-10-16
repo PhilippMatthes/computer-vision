@@ -23,8 +23,13 @@ def edge_detection(image, thr_low=0, thr_high=255):
     return cv2.Canny(image,thr_low, thr_high)
 
 
+def bilateral_filter(image):
+    return cv2.bilateralFilter(image, 9, 75, 75)
+
+
 if __name__ == "__main__":
     img = read_image("images/apb.jpg")
     for i in range(0, 255):
-        edges = edge_detection(img, thr_low=i, thr_high=i)
-        save_image("images/created/canny/apb_{}_{}.jpg".format(i, i), edges)
+        blur = bilateral_filter(img)
+        edges = edge_detection(blur, thr_low=i, thr_high=i)
+        save_image("images/created/canny_bilateral_filter/apb_{}_{}.jpg".format(i, i), edges)
