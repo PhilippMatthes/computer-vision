@@ -1,6 +1,19 @@
 import cv2
 
 
+# 1. Install OpenCV with debug libs on your system.
+# 2. Take two photos of a static (not changing) object,
+# about 3m away from two view points, with about
+# 10cm horizontal distance.
+# 3. Measure the overall brightness of the two images and adjust
+#  it to the mean value of the two images.
+# 4. Create a mixed image and put the red channel from the
+#  (adjusted) left image and the green and blue channel from
+#  the right image into said mixed image.
+#  Do this by (i) looping over all the pixels,
+# (ii) by using opencv functions – compare the runtime!
+# 5. View the mixed image with red-cyan glasses ;-)
+
 def read_image_grayscale(filename):
     return cv2.imread(filename, 0)
 
